@@ -438,8 +438,8 @@ This portfolio is for personal use. You're welcome to use it as inspiration for 
 
 - 📧 Email: chinnikrishna2023@gmail.com
 - 💼 LinkedIn: [Connect on LinkedIn](https://linkedin.com/in/chinni-krishna-kongala)
-- 💻 GitHub: [@chinnikrishna](https://github.com/ckongala)
-- 🌍 Portfolio: [https://chinnikrishna.github.io](https://ckongala.github.io)
+- 💻 GitHub: [@ckongala](https://github.com/ckongala)
+- 🌍 Portfolio: [https://ckongala.github.io](https://ckongala.github.io)
 
 ---
 
