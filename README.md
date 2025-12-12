@@ -89,8 +89,8 @@ Git helps you download and manage the project files.
 
 ```bash
 # Clone the repository
-git clone https://github.com/chinnikrishna/chinnikrishna.github.io.git
-cd chinnikrishna.github.io
+git clone <url>
+cd chinnikongala.github.io
 
 # Install dependencies
 npm install
