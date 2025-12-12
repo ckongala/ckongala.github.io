@@ -481,7 +481,7 @@ export default function Home() {
                   Get In Touch
                 </a>
                 <a 
-                  href="https://github.com/chinnikrishna" 
+                  href="https://github.com/ckongala" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-8 py-3 bg-neutral-800 dark:bg-neutral-700 hover:bg-neutral-900 dark:hover:bg-neutral-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
@@ -489,7 +489,7 @@ export default function Home() {
                   View GitHub
                 </a>
                 <a 
-                  href="https://www.linkedin.com/in/chinnikrishna" 
+                  href="https://www.linkedin.com/in/chinni-krishna-kongala" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
