@@ -32,7 +32,7 @@ This portfolio is more than just a website—it's a comprehensive showcase of my
 
 ### 📋 Content Sections
 - **Professional Background** - Comprehensive overview of expertise and leadership
-- **Experience Timeline** - Interactive vertical timeline with 6 positions (Nike, Tech Field LLC, etc.)
+- **Experience Timeline** - Interactive vertical timeline with 6 positions (Nike, ..etc.)
 - **Education** - Master's (3.9 GPA) and Bachelor's degrees with achievements
 - **Skills & Technologies** - 50+ technologies across 7 categories
 - **Key Projects** - RAG systems, microservices, automation platforms
@@ -393,14 +393,6 @@ Showcases expertise across:
 - Cloud-Native DevSecOps with automation focus
 - Distributed Systems and Microservices architecture
 - Production-ready CI/CD and Kubernetes platforms
-
-### Experience Timeline
-- Nike - Software Engineer II (Governance)
-- Tech Field LLC - Software Developer & DevOps Engineer
-- Intelligenie Software - Software Developer Intern
-- UALR - Graduate Research Assistant
-- Infor - Software Engineer Associate
-- Pantech Solutions - AI Intern
 
 ### Skills Coverage
 - Languages: Python, Go, Java, JavaScript, TypeScript
