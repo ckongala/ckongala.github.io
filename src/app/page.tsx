@@ -279,20 +279,12 @@ export default function Home() {
                 <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Cloud Custodian, WIZ, IAM, SAST/DAST, Encryption, Alation Data Governance</p>
               </div>
 
-              {/* Row 4 - AI/ML full width */}
-              <div className="space-y-3 md:col-span-2">
-                <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">AI/ML & Generative AI</h4>
-                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                  RAG (Retrieval-Augmented Generation), LLMOps, MLOps, Model Context Protocol (MCP), Agentic AI, Generative AI (GenAI), Ollama, LangChain, LangGraph, Vector Databases, Prompt Engineering
-                </p>
-              </div>
-
               {/* Data Engineering & Analytics — section divider */}
               <div className="md:col-span-2 border-t-2 border-primary-300 dark:border-primary-700 pt-6">
                 <h4 className="font-bold text-xl text-primary-700 dark:text-primary-400">Data Engineering & Analytics</h4>
               </div>
 
-              {/* Row 5 */}
+              {/* Row 4 */}
               <div className="space-y-3">
                 <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">BI & Visualization</h4>
                 <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Power BI (DAX, Data Modeling), Tableau (Calculated Fields, LOD Expressions, Parameters), Excel (Power Query, PivotTables, VBA), AWS QuickSight, Matplotlib, Plotly, Seaborn</p>
@@ -302,14 +294,22 @@ export default function Home() {
                 <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Snowflake, Delta Lake, Databricks, Data Lakehouse Architecture, Apache Kafka (Producer/Consumer), Apache Spark, Apache Airflow, dbt, AWS Glue/Athena/Redshift/EMR, Azure Data Factory/Synapse/ADLS Gen2, GCP BigQuery/Dataflow, ETL/ELT Design, Data Mart, Time Series</p>
               </div>
 
-              {/* Row 6 */}
+              {/* Row 5 */}
               <div className="space-y-3">
                 <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">Data Modeling & Governance</h4>
-                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Dimensional Modeling, Star & Snowflake Schemas, Fact & Dimension Tables, Slowly Changing Dimensions (Type 1 & 2), Data Lineage Controls, KPI Frameworks, Executive Storytelling, HIPAA/SOX Compliance, Audit Documentation, Role-Based Access Controls</p>
+                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Dimensional Modeling, Star & Snowflake Schemas, Fact & Dimension Tables, Slowly Changing Dimensions (Type 1 & 2), Data Lineage Controls, KPI Frameworks, Executive Storytelling, Role-Based Access Controls</p>
               </div>
               <div className="space-y-3">
                 <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">Statistical & ML Analytics</h4>
                 <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Pandas, NumPy, SciPy, Scikit-learn, Regression, Classification, Clustering (K-Means, Hierarchical), Anomaly Detection, Feature Engineering, A/B Testing, Hypothesis Testing, LightGBM, MLflow, Monte Carlo Simulation, NLP (spaCy, NLTK, Hugging Face, BERTopic, Topic Modeling, Embeddings)</p>
+              </div>
+
+              {/* Row 6 - AI/ML full width */}
+              <div className="space-y-3 md:col-span-2">
+                <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">AI/ML & Generative AI</h4>
+                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                  RAG (Retrieval-Augmented Generation), LLMOps, MLOps, Model Context Protocol (MCP), Agentic AI, Generative AI (GenAI), Ollama, LangChain, LangGraph, Vector Databases, Prompt Engineering
+                </p>
               </div>
 
             </div>
