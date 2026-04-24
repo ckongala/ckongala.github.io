@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import me from '@/images/me.jpg';
 import NavbarOverlay from '@/components/NavBar';
@@ -16,6 +16,18 @@ const StatCard = ({ icon, label, value, color }: { icon: string; label: string; 
 };
 
 export default function Home() {
+  const [showToast, setShowToast] = useState(true);
+  const [toastVisible, setToastVisible] = useState(true);
+
+  useEffect(() => {
+    const fadeTimer = setTimeout(() => setToastVisible(false), 9000);
+    const removeTimer = setTimeout(() => setShowToast(false), 10000);
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <NavbarOverlay />
@@ -102,13 +114,25 @@ export default function Home() {
             <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-accent-500 via-primary-500 to-accent-500"></div>
 
             <div className="space-y-12">
+              {/* Item 0 - Left (most recent) */}
+              <div className="relative grid md:grid-cols-2 gap-8 items-center">
+                <div className="card-modern p-6 md:p-8 animate-slide-in-left md:text-right">
+                  <h3 className="text-xl md:text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-3">Software Engineer III</h3>
+                  <p className="text-lg text-accent-600 dark:text-accent-400 font-semibold mb-2">Nike | Remote</p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">April 2026 - Present</p>
+                </div>
+                <div className="hidden md:block"></div>
+                {/* Circle */}
+                <div className="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-primary-500 rounded-full border-4 border-white dark:border-gray-800 shadow-lg ring-4 ring-primary-200 dark:ring-primary-800"></div>
+              </div>
+
               {/* Item 1 - Right */}
               <div className="relative grid md:grid-cols-2 gap-8 items-center">
                 <div className="hidden md:block"></div>
                 <div className="card-modern p-6 md:p-8 animate-slide-in-right">
-                  <h3 className="text-xl md:text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-3">Software Engineer II – Governance</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-3">Software Engineer II</h3>
                   <p className="text-lg text-accent-600 dark:text-accent-400 font-semibold mb-2">Nike | Atlanta, GA, USA</p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">April 2025 - Present</p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">April 2025 - March 2026</p>
                 </div>
                 {/* Circle */}
                 <div className="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-accent-500 rounded-full border-4 border-white dark:border-gray-800 shadow-lg ring-4 ring-accent-200 dark:ring-accent-800"></div>
@@ -218,43 +242,76 @@ export default function Home() {
           <h2 className="section-title text-center mb-12">Skills & Technologies</h2>
 
           <div className="card-modern p-8 md:p-12">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 gap-8">
+
+              {/* Row 1 */}
               <div className="space-y-3">
                 <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">Languages & Frameworks</h4>
                 <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Python, PySpark, Go, Java, JavaScript, TypeScript, Node.js, React.js, Angular, Flask, FastAPI, Spring, Spring Boot</p>
               </div>
-              
               <div className="space-y-3">
                 <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">Databases</h4>
                 <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">SQL, NoSQL, RDBMS, PostgreSQL, MySQL, MongoDB, DynamoDB</p>
               </div>
-              
+
+              {/* Row 2 */}
               <div className="space-y-3">
                 <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">DevOps Tools</h4>
                 <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Git, Github, GitLab, CI/CD, GitHub Actions, Jenkins, ArgoCD, SonarQube, Checkmarx, Trivy, GitOps, Docker, Kubernetes, Helm, Istio</p>
               </div>
-              
               <div className="space-y-3">
                 <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">Cloud & Infrastructure</h4>
-                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">AWS (Lambda, EC2, VPC, S3, EKS, DynamoDB, ECR, EMR, CloudFormation, Glue, Athena), Terraform, Ansible</p>
+                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                  <span className="font-semibold text-neutral-800 dark:text-neutral-200">AWS:</span> Lambda, EC2, VPC, S3, EKS, DynamoDB, ECR, EMR, CloudFormation, Glue, Athena, Redshift<br/>
+                  <span className="font-semibold text-neutral-800 dark:text-neutral-200">Azure:</span> AKS, Azure Data Factory, ADLS Gen2, Azure Functions, Azure DevOps, Azure Monitor, Synapse Analytics, Blob Storage<br/>
+                  <span className="font-semibold text-neutral-800 dark:text-neutral-200">GCP:</span> GKE, BigQuery, Cloud Storage, Cloud Functions, Cloud Run, Pub/Sub, Dataflow, Artifact Registry<br/>
+                  Terraform, Ansible
+                </p>
               </div>
-              
+
+              {/* Row 3 */}
               <div className="space-y-3">
                 <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">Monitoring & Logging</h4>
                 <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Prometheus, Grafana, Splunk, SUMO Logic, CloudWatch</p>
               </div>
-              
               <div className="space-y-3">
                 <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">Security & Governance</h4>
                 <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Cloud Custodian, WIZ, IAM, SAST/DAST, Encryption, Alation Data Governance</p>
               </div>
 
-              <div className="space-y-3">
+              {/* Row 4 - AI/ML full width */}
+              <div className="space-y-3 md:col-span-2">
                 <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">AI/ML & Generative AI</h4>
                 <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
                   RAG (Retrieval-Augmented Generation), LLMOps, MLOps, Model Context Protocol (MCP), Agentic AI, Generative AI (GenAI), Ollama, LangChain, LangGraph, Vector Databases, Prompt Engineering
                 </p>
               </div>
+
+              {/* Data Engineering & Analytics — section divider */}
+              <div className="md:col-span-2 border-t-2 border-primary-300 dark:border-primary-700 pt-6">
+                <h4 className="font-bold text-xl text-primary-700 dark:text-primary-400">Data Engineering & Analytics</h4>
+              </div>
+
+              {/* Row 5 */}
+              <div className="space-y-3">
+                <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">BI & Visualization</h4>
+                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Power BI (DAX, Data Modeling), Tableau (Calculated Fields, LOD Expressions, Parameters), Excel (Power Query, PivotTables, VBA), AWS QuickSight, Matplotlib, Plotly, Seaborn</p>
+              </div>
+              <div className="space-y-3">
+                <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">Data Warehousing & Pipelines</h4>
+                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Snowflake, Delta Lake, Databricks, Data Lakehouse Architecture, Apache Kafka (Producer/Consumer), Apache Spark, Apache Airflow, dbt, AWS Glue/Athena/Redshift/EMR, Azure Data Factory/Synapse/ADLS Gen2, GCP BigQuery/Dataflow, ETL/ELT Design, Data Mart, Time Series</p>
+              </div>
+
+              {/* Row 6 */}
+              <div className="space-y-3">
+                <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">Data Modeling & Governance</h4>
+                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Dimensional Modeling, Star & Snowflake Schemas, Fact & Dimension Tables, Slowly Changing Dimensions (Type 1 & 2), Data Lineage Controls, KPI Frameworks, Executive Storytelling, HIPAA/SOX Compliance, Audit Documentation, Role-Based Access Controls</p>
+              </div>
+              <div className="space-y-3">
+                <h4 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-4 border-b-2 border-primary-300 dark:border-primary-600 pb-2">Statistical & ML Analytics</h4>
+                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">Pandas, NumPy, SciPy, Scikit-learn, Regression, Classification, Clustering (K-Means, Hierarchical), Anomaly Detection, Feature Engineering, A/B Testing, Hypothesis Testing, LightGBM, MLflow, Monte Carlo Simulation, NLP (spaCy, NLTK, Hugging Face, BERTopic, Topic Modeling, Embeddings)</p>
+              </div>
+
             </div>
           </div>
         </div>
@@ -265,11 +322,27 @@ export default function Home() {
           <h2 className="section-title text-center mb-12">Key Projects</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
+            {/* 1 - Agentic AI */}
             <div className="card-modern p-8 relative group overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-accent-200/20 dark:bg-accent-700/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent-300/30 dark:group-hover:bg-accent-600/30 transition-all duration-500"></div>
+              <h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-4 relative z-10 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">Agentic AI Operations Platform</h3>
+              <p className="text-neutral-700 dark:text-neutral-300 mb-4 relative z-10">
+                Built a multi-agent AI system capable of performing autonomous operations with intelligent decision-making and task orchestration using LangGraph and LangChain. Implemented Role-Based Access Control (RBAC) to enforce user permissions across agent actions, ensuring only authorized agents execute sensitive operations. Integrated wisened action guards to validate and constrain agent behavior within safe operational boundaries, preventing unintended side effects. Deployed on Kubernetes with full observability via structured logging and tracing.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4 relative z-10">
+                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">Agentic AI</span>
+                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">LangGraph</span>
+                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">RBAC</span>
+                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">LangChain</span>
+                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">Python</span>
+                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">Kubernetes</span>
+              </div>
+            </div>
 
+            {/* 2 - RAG */}
+            <div className="card-modern p-8 relative group overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent-200/20 dark:bg-accent-700/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent-300/30 dark:group-hover:bg-accent-600/30 transition-all duration-500"></div>
               <h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-4 relative z-10 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">RAG-based Document Intelligence System</h3>
-
               <p className="text-neutral-700 dark:text-neutral-300 mb-4 relative z-10">
                 Built an advanced Retrieval-Augmented Generation (RAG) system using LangChain, vector databases, and LLMs for intelligent document querying and analysis. Implemented semantic search with embeddings and context-aware responses.
               </p>
@@ -281,26 +354,28 @@ export default function Home() {
               </div>
             </div>
 
+            {/* 3 - User Behavior (updated) */}
             <div className="card-modern p-8 relative group overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-accent-200/20 dark:bg-accent-700/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent-300/30 dark:group-hover:bg-accent-600/30 transition-all duration-500"></div>
-
               <h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-4 relative z-10 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">User Behavior & Sentiment Profiling Platform</h3>
-
               <p className="text-neutral-700 dark:text-neutral-300 mb-4 relative z-10">
-                Developed microservices for behavior monitoring and profile enrichment using BERT, VADER, and GPT. Instrumented observability stack with Prometheus and Grafana.
+                Developed microservices for behavior monitoring and profile enrichment using BERT, VADER, and GPT for advanced NLP-driven sentiment and morality analysis. Architected event-driven data pipelines with FastAPI and Python, storing enriched behavioral profiles in MongoDB for downstream analytics. Implemented real-time morality and sentiment classification models for user profiling and content moderation at scale, containerized with Docker for portable deployment.
               </p>
               <div className="flex flex-wrap gap-2 mb-4 relative z-10">
                 <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">NLP</span>
-                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">Microservices</span>
-                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">Observability</span>
+                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">BERT</span>
+                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">FastAPI</span>
+                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">Python</span>
+                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">Docker</span>
+                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">Morality/Sentiment</span>
+                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">MongoDB</span>
               </div>
             </div>
 
+            {/* 4 - SAMS */}
             <div className="card-modern p-8 relative group overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-accent-200/20 dark:bg-accent-700/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent-300/30 dark:group-hover:bg-accent-600/30 transition-all duration-500"></div>
-
               <h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-4 relative z-10 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">Sumo Automated Management System (SAMS)</h3>
-
               <p className="text-neutral-700 dark:text-neutral-300 mb-4 relative z-10">
                 Automated log and metrics correlation to support DevOps operations using SUMO Logic and FastAPI. Delivered executive dashboards for real-time system health monitoring.
               </p>
@@ -308,20 +383,6 @@ export default function Home() {
                 <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">Automation</span>
                 <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">DevOps</span>
                 <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">Python</span>
-              </div>
-            </div>
-
-            <div className="card-modern p-8 relative group overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent-200/20 dark:bg-accent-700/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent-300/30 dark:group-hover:bg-accent-600/30 transition-all duration-500"></div>
-
-              <h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-4 relative z-10 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">Speech Enhancement Model with Neural Networks</h3>
-
-              <p className="text-neutral-700 dark:text-neutral-300 mb-4 relative z-10">
-                Applied denoising autoencoders and feed-forward neural networks to improve speech clarity in retail call center datasets.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4 relative z-10">
-                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">Machine Learning</span>
-                <span className="px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-xs border border-accent-200 dark:border-accent-700">Neural Networks</span>
               </div>
             </div>
           </div>
@@ -353,6 +414,7 @@ export default function Home() {
                 </h4>
                 <div className="space-y-2 ml-8">
                   <p className="text-neutral-700 dark:text-neutral-300"><span className="font-semibold text-neutral-800 dark:text-neutral-200">Udemy:</span> AWS Solution Architect | AWS Cloud Formation | AWS Lambda & Serverless | Docker and Kubernetes | GIT | Linux | Power Shell</p>
+                  <p className="text-neutral-700 dark:text-neutral-300"><span className="font-semibold text-neutral-800 dark:text-neutral-200">KodeKloud:</span> Microsoft Azure Fundamentals (AZ-900) | Azure Administrator (AZ-104) | Google Cloud Associate Cloud Engineer | GCP Cloud Digital Leader</p>
                 </div>
               </div>
 
@@ -509,7 +571,7 @@ export default function Home() {
             <div className="flex items-center justify-center gap-2 text-neutral-700 dark:text-neutral-300">
               <span className="text-xl">©</span>
               <p className="text-sm md:text-base">
-                <span className="font-semibold">2025</span> Chinni Krishna Kongala. All rights reserved.
+                <span className="font-semibold">2026</span> Chinni Krishna Kongala. All rights reserved.
               </p>
             </div>
             <p className="text-xs md:text-sm text-neutral-600 dark:text-neutral-400">
@@ -518,6 +580,26 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Last Updated Toast */}
+      {showToast && (
+        <div className={`fixed top-20 right-6 z-50 transition-opacity duration-1000 ${toastVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="card-modern px-5 py-4 flex items-center gap-3 shadow-2xl border border-accent-300 dark:border-accent-700 min-w-[230px]">
+            <span className="text-2xl">🗓️</span>
+            <div className="flex-1">
+              <p className="text-xs font-semibold text-accent-600 dark:text-accent-400 uppercase tracking-wide">Last Updated</p>
+              <p className="text-sm font-bold text-neutral-800 dark:text-neutral-100">24th April 2026</p>
+            </div>
+            <button
+              onClick={() => setShowToast(false)}
+              className="text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors text-lg leading-none"
+              aria-label="Dismiss"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
 
     </div>
   );
